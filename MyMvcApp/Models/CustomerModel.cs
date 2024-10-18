@@ -6,7 +6,7 @@ namespace MyMvcApp.Models
 
     public class CustomerModel
     {
-
+        [Key]
         [Required(ErrorMessage = "Nic Required")]
         public string NIC { get; set; }
 

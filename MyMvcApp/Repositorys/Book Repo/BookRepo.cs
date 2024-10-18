@@ -16,6 +16,7 @@ namespace MyMvcApp
         {
             var NewBook = new Models.BookModel()
             {
+                Id = book.Id,
                 BookName = book.BookName,
                 Author = book.Author,
                 Price = book.Price,

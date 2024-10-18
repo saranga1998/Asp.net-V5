@@ -5,6 +5,7 @@ namespace MyMvcApp.Models
 {
     public class BookModel
     {
+        [Key]
         public string Id { get; set; }
 
         [Required(ErrorMessage = "Book Name Required")]
