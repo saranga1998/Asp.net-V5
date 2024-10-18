@@ -1,0 +1,31 @@
+@model MyMvcApp.Models.CustomerModel
+
+<h2>Add Customer</h2>
+
+<form asp-action="AddCustomer" asp-controller="Forms" method="post">
+    <div>
+        <label>Customer NIC :</label>
+        <input asp-for="NIC" class="form-control" type="text" />
+        <span asp-validation-for="NIC" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Customer Name :</label>
+        <input asp-for="CustomerName" class="form-control" type="text" />
+        <span asp-validation-for="CustomerName" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Customer Address :</label>
+        <input asp-for="Address" class="form-control" type="text" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Contact No :</label>
+        <input asp-for="ContactNo" class="form-control" type="number" />
+        <span asp-validation-for="ContactNo" class="text-danger"></span>
+    </div>
+
+    <button type="submit">Submit</button>
+</form>
