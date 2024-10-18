@@ -28,5 +28,21 @@ namespace MyMvcApp.Controllers
             }
             return View(book);
         }
+
+        [HttpGet]
+        public IActionResult AddCustomer()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddCustomer(CustomerModel customer)
+        {
+            if (ModelState.IsValid)
+            {
+                return Content("Customer added successfully");
+            }
+            return View(customer);
+        }
     }
 }
