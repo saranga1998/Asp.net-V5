@@ -14,9 +14,9 @@ namespace MyMvcApp.Controllers
         private readonly ILogger<FormsController> _logger;
         private readonly IbookRepo _Ibook;
 
-        public FormsController(IbookRepo ibookRepo, ILogger<FormsController> logger)
+        public FormsController(IbookRepo Ibook, ILogger<FormsController> logger)
         {
-            _Ibook = ibookRepo;
+            _Ibook = Ibook;
             _logger = logger;
         }
 
@@ -29,17 +29,20 @@ namespace MyMvcApp.Controllers
         [HttpPost]
         public async Task<IActionResult> AddBooks(BookModel book)
         {
-            _logger.LogInformation("AddBooks action was invoked.");
-            try
+             _logger.LogInformation("AddBooks action was invoked.");
+             try
             {
-                await _Ibook.AddBook(book);
-                _logger.LogDebug("Executing AddBooks logic...");
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error adding book");
-            }
-            return View(book);
+                 await _Ibook.AddBook(book);
+
+                 _logger.LogDebug("Executing AddBooks logic...");
+                 return RedirectToAction("AddBooks");
+             }
+             catch (Exception ex)
+             {
+                 _logger.LogError(ex, "Error adding book");
+             }
+             return View(book);
+        
         }
 
         [HttpGet]

@@ -28,6 +28,7 @@ namespace MyMvcApp
             services.AddControllersWithViews();
 
             services.AddDbContext<ApplicationDbContext>(Options=>Options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<IbookRepo,BookRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
