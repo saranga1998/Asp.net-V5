@@ -17,7 +17,7 @@ namespace MyMvcApp.Models
         public string Address { get; set; }
 
         [Required(ErrorMessage = "Contact No Required")]
-        public int ContactNo { get; set; }
+        public string ContactNo { get; set; }
     }
 
 }
