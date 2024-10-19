@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using MyMvcApp.Models;
 
 namespace MyMvcApp
@@ -25,6 +27,39 @@ namespace MyMvcApp
 
             await _dbContext.Books.AddAsync(NewBook);
             await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task AddCustomer(CustomerModel customer)
+        {
+            var NewCustomer = new Models.CustomerModel()
+            {
+                NIC = customer.NIC,
+                CustomerName = customer.CustomerName,
+                Address = customer.Address,
+                ContactNo = customer.ContactNo      
+            };
+            await _dbContext.Customers.AddAsync(NewCustomer);
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<List<BookModel>> GetAllBooks()
+        {
+            var books = await _dbContext.Books.ToListAsync();
+
+            List<BookModel> bookModels = new List<BookModel>();
+
+            foreach(var b in books){
+                var result = new BookModel{
+
+                    Id = b.Id,
+                    BookName = b.BookName,
+                    Author = b.Author,
+                    Price = b.Price,
+                    Date = b.Date
+                };
+                bookModels.Add(result);
+            }
+            return(bookModels);
         }
     }
 }

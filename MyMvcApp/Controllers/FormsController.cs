@@ -29,20 +29,20 @@ namespace MyMvcApp.Controllers
         [HttpPost]
         public async Task<IActionResult> AddBooks(BookModel book)
         {
-             _logger.LogInformation("AddBooks action was invoked.");
-             try
+            _logger.LogInformation("AddBooks action was invoked.");
+            try
             {
-                 await _Ibook.AddBook(book);
+                await _Ibook.AddBook(book);
 
-                 _logger.LogDebug("Executing AddBooks logic...");
-                 return RedirectToAction("AddBooks");
-             }
-             catch (Exception ex)
-             {
-                 _logger.LogError(ex, "Error adding book");
-             }
-             return View(book);
-        
+                _logger.LogDebug("Executing AddBooks logic...");
+                return RedirectToAction("AddBooks");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error adding book");
+            }
+            return View(book);
+
         }
 
         [HttpGet]
@@ -52,13 +52,28 @@ namespace MyMvcApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddCustomer(CustomerModel customer)
+        public async Task<IActionResult> AddCustomer(CustomerModel customer)
         {
-            if (ModelState.IsValid)
+            _logger.LogInformation("AddCustomers action was invoked.");
+            try
             {
-                return Content("Customer added successfully");
+                await _Ibook.AddCustomer(customer);
+
+                _logger.LogDebug("Executing AddCustomers logic...");
+                return RedirectToAction("AddCustomer");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error adding book");
             }
             return View(customer);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ShowBooks()
+        {
+            var books = await _Ibook.GetAllBooks();
+            return View(books);
         }
     }
 }
