@@ -1,0 +1,27 @@
+@model List<MyMvcApp.Models.BookModel>
+
+<h2>Books</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Book Id</td>
+            <td>Book Name</td>
+            <td>Book Auther</td>
+            <td>Book Price</td>
+            <td>Book Date</td>
+        </tr>
+        <tbody>
+            @foreach (var book in Model)
+            {
+                <tr>
+                    <td>@book.Id</td>
+                    <td>@book.BookName</td>
+                    <td>@book.Author</td>
+                    <td>@book.Price</td>
+                    <td>@book.Date</td>
+                </tr>
+            }
+        </tbody>
+    </thead>
+</table>
