@@ -11,17 +11,24 @@
             <td>Book Price</td>
             <td>Book Date</td>
         </tr>
-        <tbody>
+    <tbody>
             @foreach (var book in Model)
             {
-                <tr>
-                    <td>@book.Id</td>
-                    <td>@book.BookName</td>
-                    <td>@book.Author</td>
-                    <td>@book.Price</td>
-                    <td>@book.Date</td>
-                </tr>
+            <tr>
+                <td>@book.Id</td>
+                <td>@book.BookName</td>
+                <td>@book.Author</td>
+                <td>@book.Price</td>
+                <td>@book.Date</td>
+                <td><a asp-controller="Forms" asp-action="Delete" asp-route-id="@book.Id" class="btn btn-primary"
+                        onclick="return confirm('Are you sure you want delete this item?')">Delete Book</a>
+                </td>
+                <td>
+                    <a asp-controller="Forms" asp-action="Edit" asp-route-id="@book.Id" class="btn btn-primary">Edit
+                        Book</a>
+                </td>
+            </tr>
             }
-        </tbody>
+    </tbody>
     </thead>
 </table>

@@ -64,6 +64,19 @@ namespace MyMvcApp
             return (bookModels);
         }
 
+        public async Task<bool> DeleteBook(string Id)
+        {
+            var book = await _dbContext.Books.FindAsync();
+            if(book == null){
+                return false;
+            }
+            else{
+                _dbContext.Books.Remove(book);
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+        }
+
         public async Task<List<CustomerModel>> GetAllCustomers()
         {
             var customers = await _dbContext.Customers.ToListAsync();
@@ -72,7 +85,8 @@ namespace MyMvcApp
 
             foreach (var c in customers)
             {
-                var result = new CustomerModel{
+                var result = new CustomerModel
+                {
                     NIC = c.NIC,
                     CustomerName = c.CustomerName,
                     Address = c.Address,
