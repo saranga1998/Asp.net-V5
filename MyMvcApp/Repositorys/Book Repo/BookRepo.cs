@@ -36,7 +36,7 @@ namespace MyMvcApp
                 NIC = customer.NIC,
                 CustomerName = customer.CustomerName,
                 Address = customer.Address,
-                ContactNo = customer.ContactNo      
+                ContactNo = customer.ContactNo
             };
             await _dbContext.Customers.AddAsync(NewCustomer);
             await _dbContext.SaveChangesAsync();
@@ -48,8 +48,10 @@ namespace MyMvcApp
 
             List<BookModel> bookModels = new List<BookModel>();
 
-            foreach(var b in books){
-                var result = new BookModel{
+            foreach (var b in books)
+            {
+                var result = new BookModel
+                {
 
                     Id = b.Id,
                     BookName = b.BookName,
@@ -59,7 +61,26 @@ namespace MyMvcApp
                 };
                 bookModels.Add(result);
             }
-            return(bookModels);
+            return (bookModels);
+        }
+
+        public async Task<List<CustomerModel>> GetAllCustomers()
+        {
+            var customers = await _dbContext.Customers.ToListAsync();
+
+            List<CustomerModel> customerModel = new List<CustomerModel>();
+
+            foreach (var c in customers)
+            {
+                var result = new CustomerModel{
+                    NIC = c.NIC,
+                    CustomerName = c.CustomerName,
+                    Address = c.Address,
+                    ContactNo = c.ContactNo
+                };
+                customerModel.Add(result);
+            }
+            return (customerModel);
         }
     }
 }

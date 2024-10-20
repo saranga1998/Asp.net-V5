@@ -12,6 +12,6 @@ namespace MyMvcApp
         Task<List<BookModel>> GetAllBooks();
 
         Task AddCustomer(CustomerModel customer);
-
+        Task<List<CustomerModel>> GetAllCustomers();
     }
 }

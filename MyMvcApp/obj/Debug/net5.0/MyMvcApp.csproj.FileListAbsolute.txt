@@ -73,3 +73,4 @@ C:\Users\sajit\OneDrive\Documents\Asp.net\Git-PC\Net 5\MyMvcApp\bin\Debug\net5.0
 C:\Users\sajit\OneDrive\Documents\Asp.net\Git-PC\Net 5\MyMvcApp\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\sajit\OneDrive\Documents\Asp.net\Git-PC\Net 5\MyMvcApp\obj\Debug\net5.0\Razor\Views\Forms\AddCustomer.cshtml.g.cs
 C:\Users\sajit\OneDrive\Documents\Asp.net\Git-PC\Net 5\MyMvcApp\obj\Debug\net5.0\Razor\Views\Forms\ShowBooks.cshtml.g.cs
+C:\Users\sajit\OneDrive\Documents\Asp.net\Git-PC\Net 5\MyMvcApp\obj\Debug\net5.0\Razor\Views\Forms\ShowCustomers.cshtml.g.cs
