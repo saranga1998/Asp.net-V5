@@ -1,0 +1,27 @@
+@model List<MyMvcApp.Models.CustomerModel>
+
+<h2>Customers</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Customer NIC</td>
+            <td>Customer Name</td>
+            <td>Customer Address</td>
+            <td>Contact NO</td>
+            
+        </tr>
+        <tbody>
+            @foreach (var customer in Model)
+            {
+                <tr>
+                    <td>@customer.NIC</td>
+                    <td>@customer.CustomerName</td>
+                    <td>@customer.Address</td>
+                    <td>@customer.ContactNo</td>
+                    
+                </tr>
+            }
+        </tbody>
+    </thead>
+</table>

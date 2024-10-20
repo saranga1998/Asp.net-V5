@@ -75,5 +75,12 @@ namespace MyMvcApp.Controllers
             var books = await _Ibook.GetAllBooks();
             return View(books);
         }
+
+        [HttpGet]
+
+        public async Task<IActionResult> ShowCustomers(){
+            var customers = await _Ibook.GetAllCustomers();
+            return View(customers);
+        }
     }
 }
