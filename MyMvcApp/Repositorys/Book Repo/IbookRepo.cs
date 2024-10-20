@@ -11,6 +11,8 @@ namespace MyMvcApp
         Task AddBook(BookModel book);
         Task<List<BookModel>> GetAllBooks();
 
+        Task<bool> DeleteBook(string Id);
+
         Task AddCustomer(CustomerModel customer);
         Task<List<CustomerModel>> GetAllCustomers();
     }

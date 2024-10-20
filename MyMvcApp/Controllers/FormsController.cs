@@ -78,7 +78,34 @@ namespace MyMvcApp.Controllers
 
         [HttpGet]
 
-        public async Task<IActionResult> ShowCustomers(){
+        public async Task<IActionResult> Delete(string Id)
+        {
+            var delete = await _Ibook.DeleteBook(Id);
+            if (delete == false)
+            {
+                return NotFound();
+            }
+
+            return RedirectToAction("ShowBooks");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditBooks()
+        {
+            var customers = await _Ibook.GetAllCustomers();
+            return View(customers);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ShowCustomers()
+        {
+            var customers = await _Ibook.GetAllCustomers();
+            return View(customers);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditBooks()
+        {
             var customers = await _Ibook.GetAllCustomers();
             return View(customers);
         }
