@@ -13,6 +13,10 @@ namespace MyMvcApp
 
         Task<bool> DeleteBook(string Id);
 
+        Task<BookModel> GetBookById(string Id);
+
+        Task<bool> EditBook(BookModel edit);
+
         Task AddCustomer(CustomerModel customer);
         Task<List<CustomerModel>> GetAllCustomers();
     }

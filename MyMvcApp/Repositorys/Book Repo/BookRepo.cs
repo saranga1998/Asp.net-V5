@@ -67,15 +67,18 @@ namespace MyMvcApp
         public async Task<bool> DeleteBook(string Id)
         {
             var book = await _dbContext.Books.FindAsync();
-            if(book == null){
+            if (book == null)
+            {
                 return false;
             }
-            else{
+            else
+            {
                 _dbContext.Books.Remove(book);
                 await _dbContext.SaveChangesAsync();
                 return true;
             }
         }
+
 
         public async Task<List<CustomerModel>> GetAllCustomers()
         {
@@ -95,6 +98,39 @@ namespace MyMvcApp
                 customerModel.Add(result);
             }
             return (customerModel);
+        }
+
+        public async Task<BookModel> GetBookById(string Id)
+        {
+            var book = await _dbContext.Books.FindAsync(Id);
+
+            var bookModel = new BookModel()
+            {
+                Id = book.Id,
+                BookName = book.BookName,
+                Author = book.Author,
+                Price = book.Price,
+                Date = book.Date
+            };
+            return bookModel;
+        }
+
+        public async Task<bool> EditBook(BookModel edit)
+        {
+            var editBook = await _dbContext.Books.FindAsync(edit.Id);
+
+            if (editBook == null)
+            {
+                return false;
+            }
+            editBook.Author = edit.Author;
+            editBook.Price = edit.Price;
+            editBook.Date = edit.Date;
+            editBook.BookName = edit.BookName;
+
+            _dbContext.Update(editBook);
+            await _dbContext.SaveChangesAsync();
+            return true;
         }
     }
 }
