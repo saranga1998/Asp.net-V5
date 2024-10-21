@@ -29,18 +29,7 @@ namespace MyMvcApp
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task AddCustomer(CustomerModel customer)
-        {
-            var NewCustomer = new Models.CustomerModel()
-            {
-                NIC = customer.NIC,
-                CustomerName = customer.CustomerName,
-                Address = customer.Address,
-                ContactNo = customer.ContactNo
-            };
-            await _dbContext.Customers.AddAsync(NewCustomer);
-            await _dbContext.SaveChangesAsync();
-        }
+
 
         public async Task<List<BookModel>> GetAllBooks()
         {
@@ -66,7 +55,7 @@ namespace MyMvcApp
 
         public async Task<bool> DeleteBook(string Id)
         {
-            var book = await _dbContext.Books.FindAsync();
+            var book = await _dbContext.Books.FindAsync(Id);
             if (book == null)
             {
                 return false;
@@ -79,26 +68,6 @@ namespace MyMvcApp
             }
         }
 
-
-        public async Task<List<CustomerModel>> GetAllCustomers()
-        {
-            var customers = await _dbContext.Customers.ToListAsync();
-
-            List<CustomerModel> customerModel = new List<CustomerModel>();
-
-            foreach (var c in customers)
-            {
-                var result = new CustomerModel
-                {
-                    NIC = c.NIC,
-                    CustomerName = c.CustomerName,
-                    Address = c.Address,
-                    ContactNo = c.ContactNo
-                };
-                customerModel.Add(result);
-            }
-            return (customerModel);
-        }
 
         public async Task<BookModel> GetBookById(string Id)
         {
@@ -129,6 +98,85 @@ namespace MyMvcApp
             editBook.BookName = edit.BookName;
 
             _dbContext.Update(editBook);
+            await _dbContext.SaveChangesAsync();
+            return true;
+        }
+        public async Task AddCustomer(CustomerModel customer)
+        {
+            var NewCustomer = new Models.CustomerModel()
+            {
+                NIC = customer.NIC,
+                CustomerName = customer.CustomerName,
+                Address = customer.Address,
+                ContactNo = customer.ContactNo
+            };
+            await _dbContext.Customers.AddAsync(NewCustomer);
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<List<CustomerModel>> GetAllCustomers()
+        {
+            var customers = await _dbContext.Customers.ToListAsync();
+
+            List<CustomerModel> customerModel = new List<CustomerModel>();
+
+            foreach (var c in customers)
+            {
+                var result = new CustomerModel
+                {
+                    NIC = c.NIC,
+                    CustomerName = c.CustomerName,
+                    Address = c.Address,
+                    ContactNo = c.ContactNo
+                };
+                customerModel.Add(result);
+            }
+            return (customerModel);
+        }
+
+        public async Task<bool> DeleteCustomer(string Id)
+        {
+            var customer = await _dbContext.Customers.FindAsync(Id);
+
+            if(customer == null){
+                return false;
+            }
+            else{
+                _dbContext.Remove(customer);
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+        }
+
+        public async Task<CustomerModel> GetCustomerById(string Id)
+        {
+            var customer = await _dbContext.Customers.FindAsync(Id);
+
+            var customerModel = new CustomerModel()
+            {
+                NIC = customer.NIC,
+                CustomerName = customer.CustomerName,
+                Address = customer.Address,
+                ContactNo = customer.ContactNo
+            };
+
+            return customerModel;
+        }
+
+        public async Task<bool> EditCustomer(CustomerModel edit)
+        {
+            var editCustomer = await _dbContext.Customers.FindAsync(edit.NIC);
+
+            if (editCustomer == null)
+            {
+                return false;
+            }
+
+            editCustomer.Address = edit.Address;
+            editCustomer.CustomerName = edit.CustomerName;
+            editCustomer.ContactNo = edit.ContactNo;
+
+            _dbContext.Update(editCustomer);
             await _dbContext.SaveChangesAsync();
             return true;
         }

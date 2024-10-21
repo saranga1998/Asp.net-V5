@@ -19,5 +19,11 @@ namespace MyMvcApp
 
         Task AddCustomer(CustomerModel customer);
         Task<List<CustomerModel>> GetAllCustomers();
+
+        Task<bool> DeleteCustomer(string Id);
+
+        Task<CustomerModel> GetCustomerById(string Id);
+
+        Task<bool> EditCustomer(CustomerModel edit);
     }
 }
