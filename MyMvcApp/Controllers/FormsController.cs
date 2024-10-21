@@ -90,11 +90,33 @@ namespace MyMvcApp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> EditBooks()
+        public async Task<IActionResult> EditBooks(string Id)
         {
-            var customers = await _Ibook.GetAllCustomers();
-            return View(customers);
+            var book = await _Ibook.GetBookById(Id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+            return View(book);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> EditBooks(BookModel edit)
+        {
+            var book = await _Ibook.EditBook(edit);
+
+            if (book == false)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return RedirectToAction("ShowBooks");
+            }
+
+        }
+
+
 
         [HttpGet]
         public async Task<IActionResult> ShowCustomers()
@@ -103,11 +125,6 @@ namespace MyMvcApp.Controllers
             return View(customers);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> EditBooks()
-        {
-            var customers = await _Ibook.GetAllCustomers();
-            return View(customers);
-        }
+
     }
 }
