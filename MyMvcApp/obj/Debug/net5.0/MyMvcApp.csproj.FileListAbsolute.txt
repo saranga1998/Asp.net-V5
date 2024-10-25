@@ -84,3 +84,4 @@ C:\Users\sajit\OneDrive\Documents\Asp.net\Git-PC\Net 5\MyMvcApp\bin\Debug\net5.0
 C:\Users\sajit\OneDrive\Documents\Asp.net\Git-PC\Net 5\MyMvcApp\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\sajit\OneDrive\Documents\Asp.net\Git-PC\Net 5\MyMvcApp\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 C:\Users\sajit\OneDrive\Documents\Asp.net\Git-PC\Net 5\MyMvcApp\obj\Debug\net5.0\Razor\Views\Forms\EditBooks.cshtml.g.cs
+C:\Users\sajit\OneDrive\Documents\Asp.net\Git-PC\Net 5\MyMvcApp\obj\Debug\net5.0\Razor\Views\Issues\BookIssue.cshtml.g.cs
