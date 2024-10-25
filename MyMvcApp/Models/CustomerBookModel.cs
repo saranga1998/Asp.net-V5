@@ -24,5 +24,6 @@ namespace MyMvcApp{
         public string NIC {get; set;}
 
         public CustomerModel Customer{get; set;}
+
     }
 }
