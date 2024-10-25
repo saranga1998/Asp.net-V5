@@ -1,0 +1,36 @@
+@model MyMvcApp.Models.CustomerBookModel
+
+<h2>Issue Book</h2>
+
+<form asp-action="BookIssue" asp-controller="Issues" method="post">
+    
+    <div>
+        <label>Book Name:</label>
+        <select asp-for="BookId" asp-items="ViewBag.BookList" class="form-control">
+            <option value="">-- Select Book --</option> 
+        </select>
+        <span asp-validation-for="BookId" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label>Member Name :</label>
+        <select asp-for="NIC" asp-items="ViewBag.CustomerList" class="form-control">
+            <option value="">-- Select Book --</option> 
+        </select>
+        <span asp-validation-for="NIC" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Issue Date :</label>
+        <input asp-for="IssueDate" class="form-control" type="date" />
+        <span asp-validation-for="IssueDate" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Receving Date :</label>
+        <input asp-for="RecievedDate" class="form-control" type="date" />
+        <span asp-validation-for="RecievedDate" class="text-danger"></span>
+    </div>
+
+    <button type="submit">Submit</button>
+</form>
