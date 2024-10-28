@@ -8,4 +8,6 @@ public interface IissueRepo{
     Task <List<BookModel>> GetAllBooks(); 
 
     Task <List<CustomerModel>> GetAllMembers();
+
+    Task AddBookIssue(CustomerBookModel issue);
 }
